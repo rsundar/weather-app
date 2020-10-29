@@ -6,8 +6,12 @@
     <title>Check The Weather</title>
   </head>
   <body>
-    <div id="weather-app">
-    </div>  
+    <form id="cityForm">
+      <input type="text" name="city" value="Enter the City">
+      <input type="button" value="Submit" onclick="submitForm()">
+      <input type="radio" id="m" name="metric">Celcius
+      <input type="radio" id="i" name="metric">Farenhiet
+    </form>
   </body>
-  <script src="build.js"></script>
+  <script src="main.js"></script>
 </html>
