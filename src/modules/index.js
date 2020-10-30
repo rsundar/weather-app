@@ -1,7 +1,9 @@
-import { retrieveData } from './fetch.js'
+import retrieveData from './fetch';
+
+const ul = document.getElementById('weather-app');
+const button = document.getElementById('submit');
 
 function showData(weatherData) {
-  const ul = document.getElementById('weather-data');
   ul.innerHTML = '';
   const table = `
       <li> Temperature: ${weatherData.getTemperature()} </li>
@@ -27,4 +29,4 @@ function submitForm() {
   weather.then(value => showData(value));
 }
 
-export default { submitForm };
+button.addEventListener('click', submitForm);

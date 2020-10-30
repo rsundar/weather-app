@@ -1,7 +1,7 @@
-function getData(data, wind) {
+export default function getData(data, wind) {
   return {
-    data: data,
-    wind: wind,
+    data,
+    wind,
     getTemperature() {
       return data.temp;
     },
@@ -21,9 +21,7 @@ function getData(data, wind) {
       return wind.speed;
     },
     getWindDirection() {
-      return wind.direction;
+      return wind.deg;
     },
   };
 }
-
-export default { getData };
