@@ -3,7 +3,7 @@ import retrieveData from './fetch';
 const ul = document.getElementById('weather-app');
 const button = document.getElementById('submit');
 
-function showData(weatherData) {
+const showData = (weatherData) => {
   ul.innerHTML = '';
   const table = `
       <li> Temperature: ${weatherData.getTemperature()} </li>
@@ -15,9 +15,9 @@ function showData(weatherData) {
       <li> Wind Direction: ${weatherData.getWindDirection()} </li>
     `;
   ul.insertAdjacentHTML('beforeend', table);
-}
+};
 
-function submitForm() {
+const submitForm = () => {
   const city = document.forms.cityForm.city.value;
   let metric = '';
   if (document.forms.cityForm.i.checked) {
@@ -27,6 +27,6 @@ function submitForm() {
   }
   const weather = retrieveData(city, metric);
   weather.then(value => showData(value));
-}
+};
 
 button.addEventListener('click', submitForm);
