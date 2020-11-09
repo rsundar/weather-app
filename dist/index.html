@@ -4,16 +4,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Check The Weather</title>
+    <link href="https://cdn.jsdeliver.net/npm/bulma@0.9.1/css/bulma.min.css">
   </head>
   <body>
-    <form id="cityForm">
-      <input type="text" name="city" value="Enter the City">
-      <input type="button" id="submit" value="Submit">
-      <input type="radio" id="m" name="metric">Celcius
-      <input type="radio" id="i" name="metric">Farenhiet
-    </form>
-    <ul id="weather-app">
-    </ul>
+    <div class="container is-fluid">
+      <section class="section">
+        <form id="cityForm">
+          <div class="field">
+            <label class="label">City</label>
+            <div class="control">
+              <input type="text" name="city">
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" id="m" name="metric">Celcius
+                  </label>
+                  <label class="radio">
+                    <input type="radio" id="i" name="metric">Farenhiet
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <input class="button is-success" type="button" id="submit" value="Submit">
+            </div>
+          </div>
+        </form>
+      </section>
+      <ul id="weather-app">
+      </ul>
+    </div>
   </body>
   <script src="main.js"></script>
 </html>
