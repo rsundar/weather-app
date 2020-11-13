@@ -1,20 +1,23 @@
 import retrieveData from './fetch';
+import unsplash from './unsplash';
 
-const ul = document.getElementById('weather-app');
+const div = document.getElementById('weather-app');
 const button = document.getElementById('submit');
+const image = document.getElementById('photo');
+let description = '';
 
 const showData = (weatherData) => {
-  ul.innerHTML = '';
+  div.innerHTML = '';
   const table = `
-      <li> Temperature: ${weatherData.getTemperature()} </li>
-      <li> Feels Like: ${weatherData.getFeelsLike()} </li>
-      <li> Min Temperature: ${weatherData.getMinTemperature()} </li>
-      <li> Max Temperature: ${weatherData.getMaxTemperature()} </li>
-      <li> Humidity: ${weatherData.getHumidity()} </li>
-      <li> Wind Speed: ${weatherData.getWindSpeed()} </li>
-      <li> Wind Direction: ${weatherData.getWindDirection()} </li>
+      <p class="title is-4"> Temperature: ${weatherData.getTemperature()} </p>
+      <p class="subtitle is-6"> Feels Like: ${weatherData.getFeelsLike()} </p>
+      <p class="content"> Min Temperature: ${weatherData.getMinTemperature()} </p>
+      <p class="content"> Max Temperature: ${weatherData.getMaxTemperature()} </p>
+      <p class="content"> Humidity: ${weatherData.getHumidity()} </p>
+      <p class-"content"> Wind Speed: ${weatherData.getWindSpeed()} </p>
+      <p class="content"> Wind Direction: ${weatherData.getWindDirection()} </p>
     `;
-  ul.insertAdjacentHTML('beforeend', table);
+  div.insertAdjacentHTML('beforeend', table);
 };
 
 const submitForm = () => {
@@ -26,7 +29,11 @@ const submitForm = () => {
     metric = 'metric';
   }
   const weather = retrieveData(city, metric);
-  weather.then(value => showData(value));
+  weather.then(value => { showData(value); description = value.weather[0].description; });
+  const imgArray = unsplash(description, 'day');
+  imgArray.then(value => {
+    image.src = value.results[Math.floor(Math.random() * 10)].urls.regular;
+  });
 };
 
 button.addEventListener('click', submitForm);
