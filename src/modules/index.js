@@ -11,11 +11,13 @@ const showData = (weatherData) => {
   const table = `
       <p class="title is-4"> Temperature: ${weatherData.getTemperature()} </p>
       <p class="subtitle is-6"> Feels Like: ${weatherData.getFeelsLike()} </p>
-      <p class="content"> Min Temperature: ${weatherData.getMinTemperature()} </p>
-      <p class="content"> Max Temperature: ${weatherData.getMaxTemperature()} </p>
-      <p class="content"> Humidity: ${weatherData.getHumidity()} </p>
-      <p class-"content"> Wind Speed: ${weatherData.getWindSpeed()} </p>
-      <p class="content"> Wind Direction: ${weatherData.getWindDirection()} </p>
+      <div class="content">
+        <p class="content"> Min Temperature: ${weatherData.getMinTemperature()} </p>
+        <p class="content"> Max Temperature: ${weatherData.getMaxTemperature()} </p>
+        <p class="content"> Humidity: ${weatherData.getHumidity()} </p>
+        <p class-"content"> Wind Speed: ${weatherData.getWindSpeed()} </p>
+        <p class="content"> Wind Direction: ${weatherData.getWindDirection()} </p>
+      </div>
     `;
   div.insertAdjacentHTML('beforeend', table);
 };
@@ -30,9 +32,10 @@ const submitForm = () => {
   }
   const weather = retrieveData(city, metric);
   weather.then(value => { showData(value); description = value.weather[0].description; });
-  const imgArray = unsplash(description, 'day');
+  const imgArray = unsplash(description, city);
   imgArray.then(value => {
-    image.src = value.results[Math.floor(Math.random() * 10)].urls.regular;
+    const random = Math.floor(Math.random() * (Object.keys(value.results).length - 1));
+    image.src = value.results[random].urls.regular;
   });
 };
 
