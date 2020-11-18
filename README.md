@@ -2,6 +2,7 @@
 
 > The purpose of this project is to hone our skills in API access with asynchronous functions in javascript. In order to do this I have built a simple web application which
   allows the user to appraise themselves of the weather conditions in a city of their choice. OpenWeatherMap API was used for the weather data for this project.
+  <img src="./docs/zealous-goodall-ceb90e.netlify.app_(Galaxy S5) -New York City.png">
   
 ## :hammer: Built With
 
