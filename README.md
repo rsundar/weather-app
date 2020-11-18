@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-[Weather App](https://livedemo.com)
+[Weather App](https://zealous-goodall-ceb90e.netlify.app/)
 
 
 ## Getting Started
